@@ -49,6 +49,7 @@ def main():
         else:
             print('\nOpção inválida!!!')
 
+        tarefas.sort(key=lambda tarefa: tarefa['id'])
         tarefas.sort(key=lambda tarefa: tarefa['status'], reverse=True)
 
         print()
