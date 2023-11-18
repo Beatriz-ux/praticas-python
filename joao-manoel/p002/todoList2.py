@@ -2,6 +2,19 @@ def main():
     tarefas = []
     id = 1
 
+    #abrir arquivo e carregar tarefas se existir
+
+    try:
+        with open('tarefas.txt', 'r') as arquivo:
+            for linha in arquivo:
+                linha = linha.strip()
+                linha = linha.split(';')
+                tarefa = {'id': int(linha[0]), 'tarefa': linha[1].strip(), 'status': linha[2]}
+                tarefas.append(tarefa)
+                id += 1
+    except FileNotFoundError:
+        pass
+
     while True:
         print("===== Menu =====")
         print("1. Listar tarefas")
@@ -53,6 +66,11 @@ def main():
         tarefas.sort(key=lambda tarefa: tarefa['status'], reverse=True)
 
         print()
+
+    #salvar tarefas no arquivo
+    with open('tarefas.txt', 'w') as arquivo:
+        for tarefa in tarefas:
+            arquivo.write(f'{tarefa["id"]};{tarefa["tarefa"]};{tarefa["status"]}\n')
 
 
 if __name__ == '__main__':
