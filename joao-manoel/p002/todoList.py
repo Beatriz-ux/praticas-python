@@ -23,7 +23,7 @@ def main():
             tarefa = {'id': id, 'tarefa': tarefa, 'status': '[ ]'}
             id += 1
             tarefas.append(tarefa)
-            print('\nTarefa registrada!!!')
+            print('\nTarefa registrada!')
 
         elif opcao == 3:
             tarefaId = int(input('\nDigite o ID da tarefa: '))
@@ -31,7 +31,7 @@ def main():
             for tarefa in tarefas:
                 if tarefaId == tarefa['id']:
                     tarefa['status'] = '[x]'
-                    print('\nTarefa realizada!!!')
+                    print('\nTarefa realizada!')
                     break
 
         elif opcao == 4:
@@ -40,14 +40,14 @@ def main():
             for tarefa in tarefas:
                 if tarefaId == tarefa['id']:
                     tarefa['tarefa'] = input('Digite a nova tarefa: ').capitalize()
-                    print('\nTarefa editada!!!')
+                    print('\nTarefa editada!')
                     break
 
         elif opcao == 5:
             break
 
         else:
-            print('\nOpção inválida!!!')
+            print('\nOpção inválida!')
 
         tarefas.sort(key=lambda tarefa: tarefa['id'])
         tarefas.sort(key=lambda tarefa: tarefa['status'], reverse=True)
