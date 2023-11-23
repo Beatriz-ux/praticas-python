@@ -1,3 +1,9 @@
+def buscar_tarefa(lista, id):
+    for index, tarefa in enumerate(lista):
+        if tarefa['id'] == id:
+            return index
+    return None
+
 def listar_tarefas(lista):
     if len(lista) == 0:
         print("\nLista vazia!")
@@ -25,22 +31,24 @@ def adicionar_tarefa(lista):
 
     
 def concluir_tarefa(lista, id):
-    if(id <= len(lista) and id > 0): # verifica se o id existe na lista
-        if(lista[id-1]['finalizado']):
+    indice = buscar_tarefa(lista, id)
+    if(indice is not None): # verifica se o id existe na lista
+        if(lista[indice]['finalizado']):
             return
         else:
-            lista[id-1]['finalizado'] = True
-            lista.insert(0, lista.pop(id-1)) # move o item para o topo da lista
+            lista[indice]['finalizado'] = True
+            lista.insert(0, lista.pop(indice)) # move o item para o topo da lista
             print("\nTarefa concluída com sucesso!")
     else:
         print("\nTarefa não encontrada!")
   
       
 def editar_tarefa(lista, id):
-    if(id <= len(lista) and id > 0):
+    indice = buscar_tarefa(lista, id)
+    if(indice is not None):
         descricao = input("Digite a nova descrição da tarefa: ")
         descricao = descricao.capitalize()
-        lista[id-1]['descricao'] = descricao
+        lista[indice]['descricao'] = descricao
         print("\nTarefa editada com sucesso!")
     else:
         print("\nTarefa não encontrada!")
