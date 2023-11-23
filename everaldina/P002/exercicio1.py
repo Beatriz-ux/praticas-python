@@ -1,3 +1,5 @@
+import json
+
 def buscar_tarefa(lista, id):
     for index, tarefa in enumerate(lista):
         if tarefa['id'] == id:
@@ -53,9 +55,25 @@ def editar_tarefa(lista, id):
     else:
         print("\nTarefa não encontrada!")
 
+def salvar_tarefas(lista):
+    with open("tarefas.json", "w") as arquivo:
+        for tarefa in lista:
+            json.dump(tarefa, arquivo)
+            arquivo.write("\n")
+
+def carregar_tarefas():
+    lista = []
+    try:
+        with open("tarefas.json", "r") as arquivo:
+            for linha in arquivo:
+                tarefa = json.loads(linha)
+                lista.append(tarefa)
+    except FileNotFoundError:
+        pass
+    return lista
    
 def main():
-    lista = []
+    lista = carregar_tarefas()
     while True:
         print("1 - Listar tarefas")
         print("2 - Adicionar tarefa")
@@ -81,10 +99,12 @@ def main():
                 id = int(input("\nDigite o id da tarefa: "))
                 editar_tarefa(lista, id)
             case 0:
+                salvar_tarefas(lista)
                 break
             case _default:
                 print("Opção inválida!")
         print()
+    
     
 
 if __name__ == '__main__':
