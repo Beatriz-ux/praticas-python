@@ -25,10 +25,13 @@ def adicionar_tarefa(lista):
 
     
 def concluir_tarefa(lista, id):
-    if(id <= len(lista) and id > 0):
-        lista[id-1]['finalizado'] = True
-        lista.insert(0, lista.pop(id-1)) # move o item para o topo da lista
-        print("\nTarefa concluída com sucesso!")
+    if(id <= len(lista) and id > 0): # verifica se o id existe na lista
+        if(lista[id-1]['finalizado']):
+            return
+        else:
+            lista[id-1]['finalizado'] = True
+            lista.insert(0, lista.pop(id-1)) # move o item para o topo da lista
+            print("\nTarefa concluída com sucesso!")
     else:
         print("\nTarefa não encontrada!")
   
@@ -57,6 +60,7 @@ def main():
             opcao = -1
             continue
         
+        # menu
         match opcao:
             case 1:
                 listar_tarefas(lista)
