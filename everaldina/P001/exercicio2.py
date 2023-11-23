@@ -70,6 +70,7 @@ a -= b
 print(a)
 print(f"({a}) -= ({c}) = ", end="")
 a -= c
+print(a)
 
 print("\nMultiplicação e Atribuição")
 print(f"({a}) *= ({b}) = ", end="")
@@ -100,6 +101,42 @@ print(a)
 
 # Os operadores de incremento e decremento não existem em python
 
+
+# Limite dos inteiros
+print("\n\nLimite dos inteiros")
+fat = 1
+for i in range(1, 31):
+    fat *= i
+print(f'30! = {fat}')
+# Resultado em Python 30! = 265252859812191058636308480000000
+# Limite em c/c++ (long long int) = 9223372036854775807
+# Limite em c/c++ (unsigned long long int) = 18446744073709551615
+# Com os tipos nativos inteiros de C/C++ não é possível representar o valor de 30!
+
+# Variaveis imutaveis
+print("\n\nVariaveis imutaveis")
+a = 5
+b = a
+print(f"\na = {a}, b = {b}")
+
+a = 10
+
+print(f"a = 10 ==> a = {a}, b = {b}")
+
+# Metodos int
+print("\n\nMetodos int")
+print("int.bit_length(): Retorna o número de bits necessários para representar o inteiro em binário")
+print(f"\tint.bit_length({a}) = {a.bit_length()}")
+print("\nint.bit_count(): Retorna o número de bits 1 necessários para representar o inteiro em binário")
+print(f"\tint.bit_count({a}) = {a.bit_count()}")
+print("\nint.to_bytes(): Retorna um array de bytes representando o inteiro")
+print(f"\tint.to_bytes({a}, byteorder='big') = {a.to_bytes(a.bit_length(), byteorder='big')}")
+print(f"\tint.to_bytes({a}, byteorder='little') = {a.to_bytes(a.bit_length(), byteorder='little')}")
+print("\nint.from_bytes(): Retorna um inteiro a partir de um array de bytes")
+print(f"\tint.from_bytes({a.to_bytes(a.bit_length(), byteorder='big')}, byteorder='big') = {int.from_bytes(a.to_bytes(a.bit_length(), byteorder='big'), byteorder='big')}")
+print(f"\tint.from_bytes({a.to_bytes(a.bit_length(), byteorder='little')}, byteorder='little') = {int.from_bytes(a.to_bytes(a.bit_length(), byteorder='little'), byteorder='little')}")
+print("\nint.as_integer_ratio: Retorna um par de inteiros cuja divisao é igual ao número inteiro.")
+print(f"\tint.as_integer_ratio({a}) = {a.as_integer_ratio()}")
 
 
 
