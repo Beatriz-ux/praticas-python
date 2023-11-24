@@ -46,10 +46,13 @@ while True:
             if position == -1:
                 print("Tarefa não encontrada")
             else:
-                listaDeTarefas[position] = listaDeTarefas[position].replace("[]", "[x]")
-                print("Concluindo tarefa: " + listaDeTarefas[position])
-                listaDeTarefas.insert(0, listaDeTarefas[position])
-                listaDeTarefas.pop(position+1) #remove a tarefa da posição antiga
+                if listaDeTarefas[position].find("[x]") != -1:
+                    print("Tarefa já concluída")
+                else:
+                    listaDeTarefas[position] = listaDeTarefas[position].replace("[]", "[x]")
+                    print("Concluindo tarefa: " + listaDeTarefas[position])
+                    listaDeTarefas.insert(0, listaDeTarefas[position])
+                    listaDeTarefas.pop(position+1) #remove a tarefa da posição antiga
         case 5:
             print("Qual o id da tarefa que deseja editar?")
             idEditar = int(input())
