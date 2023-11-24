@@ -5,3 +5,5 @@ def buscarTarefa(listaDeTarefas, id):
             return posicao
         posicao = posicao + 1
     return -1
+def limpaTela():
+    print("\n" * 100)
