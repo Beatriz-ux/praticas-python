@@ -4,4 +4,12 @@ print("número | ASCII | OCTA | HEXA")
 for i in digitos:
     ascci = ord(i)
     print(f" '{i}'  -   {ascci}  -  {oct(ascci)} - {hex(ascci)}")
+
+# caracteres especiais
+char_especial = ['ç', 'ã']
+print("Caracteres Especiais: Usam codigo Unicode")
+print("número | UNICODE | OCTA | HEXA")
+for i in char_especial:
+    ascci = ord(i)
+    print(f" '{i}'  -   {ascci}  -  {oct(ascci)} - {hex(ascci)}")
     
