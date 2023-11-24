@@ -137,6 +137,8 @@ print(f"\tint.from_bytes({a.to_bytes(a.bit_length(), byteorder='big')}, byteorde
 print(f"\tint.from_bytes({a.to_bytes(a.bit_length(), byteorder='little')}, byteorder='little') = {int.from_bytes(a.to_bytes(a.bit_length(), byteorder='little'), byteorder='little')}")
 print("\nint.as_integer_ratio: Retorna um par de inteiros cuja divisao é igual ao número inteiro.")
 print(f"\tint.as_integer_ratio({a}) = {a.as_integer_ratio()}")
+print("\n\nOutros metodos e atributos do tipo int podem ser visualizados chamando a funcao dir(int).")
+print(f'\t{dir(int)}')
 
 
 

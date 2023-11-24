@@ -154,4 +154,7 @@ print(f"\tfloat.hex(42.0) = {float.hex(42.0)}")
 print("\nfloat.fromhex: Retorna o número de ponto flutuante representado por uma string hexadecimal.")
 print(f"\tfloat.fromhex('0x1.921fb54442d18p+1') = {float.fromhex('0x1.921fb54442d18p+1')}")
 print(f"\tfloat.fromhex('0x1.5000000000000p+5') = {float.fromhex('0x1.5000000000000p+5')}")
+print("\n\nOutros metodos e atributos do tipo float podem ser visualizados chamando a funcao dir(float).")
+print(f'\t{dir(float)}')
+
 
