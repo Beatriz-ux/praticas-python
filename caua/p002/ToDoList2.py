@@ -37,7 +37,6 @@ while(acao != 0):
                     print(tarefa);
         
         case 3:
-
             print("---Marcando uma tarefa---")   
             index = -1         
             check = False
@@ -53,20 +52,19 @@ while(acao != 0):
                         listaTarefas[index] = tarefa.replace("[ ]", "[x]");
                         print("Tarefa concluida com sucesso!")
                         check = True;
+                        
+                        #Colocando a tarefa para o inicio
+                        if index > 0:
+                            listaAux = listaTarefas.copy()
+                            listaTarefas[0] = listaTarefas[index]
+                            for i in range(index):
+                                listaTarefas[i+1] = listaAux[i]
                     break;
             
             if check == False:
                 index = -1
                 print("Id nao encontrado")
 
-            #Colocando a tarefa para o inicio
-            if index > 0:
-                listaAux = listaTarefas.copy()
-                listaTarefas[0] = listaTarefas[index]
-                for i in range(index):
-                    listaTarefas[i+1] = listaAux[i]
-
-        
         case 4:
             print("---Editando uma tarefa---")
             index = -1
