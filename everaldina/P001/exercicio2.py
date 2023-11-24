@@ -116,12 +116,10 @@ print(f'30! = {fat}')
 # Variaveis imutaveis
 print("\n\nVariaveis imutaveis")
 a = 5
-b = a
-print(f"\na = {a}, b = {b}")
-
-a = 10
-
-print(f"a = 10 ==> a = {a}, b = {b}")
+print(f"\na = {a}, endereço de a = {hex(id(a))}")
+a += 1
+print(f"a+= 1 ==> a = {a}, endereco de a = {hex(id(a))}")
+print("O valor de 'a' mudou, assim como seu endereço de memória, pois foi criado um novo objeto int com valor 6 e a variavel 'a' passou a apontar para esse novo objeto.")
 
 # Metodos int
 print("\n\nMetodos int")

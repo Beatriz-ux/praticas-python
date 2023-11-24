@@ -127,18 +127,12 @@ print(f"Menor potencia de 2 em float: 2^{exp_min}")
 
 
 # imutabilidade numerica
-a = 7
-b = a
-
-print(f"\n\na = {a}")
-print(f"b = {b}")
-
-a = 10
-
-print(f"Atribuindo a = 10:")
-print(f"a = {a}")
-print(f"b = {b}")
-
+print("\n\nVariaveis imutaveis")
+a = 5.0
+print(f"\na = {a}, endereço de a = {hex(id(a))}")
+a += 1
+print(f"a+= 1 ==> a = {a}, endereco de a = {hex(id(a))}")
+print("O valor de 'a' mudou, assim como seu endereço de memória, pois foi criado um novo objeto int com valor 6 e a variavel 'a' passou a apontar para esse novo objeto.")
 
 # metodos float
 print("\n\nMetodos float:")
