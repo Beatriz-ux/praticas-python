@@ -15,6 +15,8 @@ As pastas do repositório está organizado da seguinte forma:
 ### Soluções
 - Semana 1: Introdução ao Python.
     - [P001](./P001/): A atividade envolve a manipulação de diferentes tipos de variáveis em Python, explorando conceitos como operadores aritméticos para inteiros, representação de números grandes, imutabilidade de variáveis numéricas e métodos disponíveis. Além disso, abrange a interação entre strings e números, como imprimir caracteres numéricos com seus códigos ASCII, modificando o comportamento do print, e explora caracteres especiais. Também inclui a separação e análise de strings, verificando ordem alfabética, palíndromos e comprimento. 
+    - [P002](./P002/): Sistema de gerenciamento de tarefas, com as funcionalidades de : listar, registrar e marcar como concluída.
+
 
 
 
