@@ -9,3 +9,6 @@ if not os.path.exists(nome_arquivo):
     # Cria o arquivo vazio
     with open(nome_arquivo, 'w') as arquivo:
         pass  # Arquivo criado, mas vazio
+with open(nome_arquivo, 'r') as arquivo:
+    listaDeTarefas = [linha.strip() for linha in arquivo.readlines()]
+
