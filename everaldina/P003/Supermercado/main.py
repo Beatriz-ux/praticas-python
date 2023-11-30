@@ -1,9 +1,10 @@
 from supermercado import Supermercado
 
 def main():
-    sp = Supermercado()
+    sp = Supermercado() # Instanciando a classe Supermercado
     opcao = -1
     
+    # Inserindo produtos testes
     sp.inserir_produto("Arroz", 10.50)
     sp.inserir_produto("Feijão", 7.50)
     sp.inserir_produto("Macarrão", 5.50)
@@ -21,7 +22,7 @@ def main():
     sp.inserir_produto("Biscoito", 3.50)
     sp.inserir_produto("Bolacha", 5.50)
     
-    
+    #menu
     while opcao != 0:
         print("1. Inserir produto")
         print("2. Excluir produto")
