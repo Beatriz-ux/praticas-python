@@ -37,20 +37,16 @@ class Supermercado:
         return True
         
     def remover_produto(self, identificador):
-        if type(identificador) == int:
-            for p in self.__produtos:
-                if p["codigo"] == identificador:
-                    self.__produtos.remove(p)
-                    return True
-            return False
-        elif type(identificador) == str:
-            for p in self.__produtos:
-                if p["nome"] == identificador:
-                    self.__produtos.remove(p)
-                    return True
-            return False
-        else:
-            raise ValueError("Identificador invalido")
+        try:
+            identificador = int(identificador)
+        except ValueError:
+            pass
+         
+        for p in self.__produtos:
+            if int(p["codigo"]) == identificador: # ignora o zero a esquerda
+                self.__produtos.remove(p)
+                return True
+        return False
 
     def listar_produtos(self):
         lista_ordenada = sorted(self.__produtos, key=lambda k: k["preco"])
@@ -61,6 +57,11 @@ class Supermercado:
             input()
 
     def buscar_preco(self, cod):
+        try:
+            cod = int(cod)
+        except ValueError:
+            pass
+        
         for p in self.__produtos:
-            if p["codigo"] == cod:
+            if int(p["codigo"]) == cod:
                 return p["preco"]

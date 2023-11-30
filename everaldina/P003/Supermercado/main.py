@@ -53,7 +53,7 @@ def main():
                     
             case 2:
                 print("\n------REMOVER PRODUTO------")
-                id = input("Digite o código ou nome do produto: ")
+                id = input("Digite o código do produto: ")
                 try:
                     if(sp.remover_produto(id)):
                         print("Produto removido com sucesso.")
@@ -68,7 +68,12 @@ def main():
                 print("\n------BUSCAR PRODUTOS------")
                 codigo = input("Digite o código do produto: ")
                 
-                print("\nO preço do produto é R$" + str(sp.buscar_preco(codigo)))
+                preco = sp.buscar_preco(codigo)
+                
+                if preco != None:
+                    print("O preço do produto é R$" + str(sp.buscar_preco(codigo)))
+                else:
+                    print("Produto não encontrado.")
             case 0:
                 print("\nSaindo...")
             case _:
