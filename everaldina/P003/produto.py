@@ -1,10 +1,9 @@
 class Produto:
     __id = 0
     
-    def __init__(self, nome, preco, quantidade):
+    def __init__(self, nome, preco):
         self.__nome = nome
         self.__preco = preco
-        self.__quantidade = quantidade
         self.__id = Produto.__id
         Produto.__id += 1
 
@@ -12,12 +11,11 @@ class Produto:
         return self.__nome
     def get_preco(self):
         return self.__preco
-    def get_quantidade(self):
-        return self.__quantidade
     
     def set_nome(self, nome):
         self.__nome = nome
     def set_preco(self, preco):
         self.__preco = preco
-    def set_quantidade(self, quantidade):
-        self.__quantidade = quantidade
+        
+    def __str__(self):
+        return "Cod.: " + str(self.__id) + " - " + self.__nome + " - R$" + str(self.__preco)
