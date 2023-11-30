@@ -4,10 +4,21 @@ def reajusta_dez_porcento(empregados):
     pass
 
 def carrega_empregados():
-    pass
+    lista = []
+    try:
+        with open("empregados.json", "r") as arquivo:
+            for linha in arquivo:
+                e = json.loads(linha)
+                lista.append(e)
+    except FileNotFoundError:
+        pass
+    return lista
 
 def salva_empregados(empregados):
-    pass
+    with open("empregados.json", "w") as arquivo:
+        for e in empregados:
+            empregados.dump(e, arquivo)
+            arquivo.write("\n")
 
 def imprime_empregados(empregados):
     pass
