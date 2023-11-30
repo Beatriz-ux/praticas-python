@@ -1,5 +1,3 @@
-import produto
-
 class Supermercado:
     __id = "0" * 13
     
@@ -21,7 +19,8 @@ class Supermercado:
         if not nome.capitalize()[0].isalpha():
             raise ValueError("Nome invalido")
         else:
-            p = {"codigo": Supermercado.__id, "nome": nome, "preco": preco}
+            preco_formatado = int(str(preco)[0: str(preco).find(".") + 3])
+            p = {"codigo": Supermercado.__id, "nome": nome, "preco": preco_formatado}
             self.__produtos.append(p)
             Supermercado.__id = str(int(Supermercado.__id) + 1).zfill(13)
         
@@ -42,8 +41,11 @@ class Supermercado:
             raise ValueError("Identificador invalido")
 
     def listar_produtos(self):
-        for p in self.__produtos:
-            print("Cod.: " + p["codigo"] + " - " + p["nome"] + " - R$" + p["preco"])
+        lista_ordenada = sorted(self.__produtos, key=lambda k: k["preco"])
+        for i in range(0, len(lista_ordenada), 10):
+            sub_lista = lista_ordenada[i: i + 10]
+            for p in sub_lista:
+                print("Cod.: " + p["codigo"] + " - " + p["nome"] + " - R$" + p["preco"])
 
     def buscar_preco(self, cod):
         for p in self.__produtos:
