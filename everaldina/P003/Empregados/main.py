@@ -1,7 +1,8 @@
 import json
 
 def reajusta_dez_porcento(empregados):
-    pass
+    for e in empregados:
+        e['salario'] = e['salario'] * 1.1
 
 def carrega_empregados():
     lista = []
@@ -31,10 +32,12 @@ def imprime_empregados(empregados):
 def main():
     empregados = carrega_empregados()
     
+    print("Antes do reajuste:")
     imprime_empregados(empregados)
     
-    #reajusta_dez_porcento(empregados)
-    #imprime_empregados(empregados)
+    reajusta_dez_porcento(empregados)
+    print("Depois do reajuste:")
+    imprime_empregados(empregados)
     
     salva_empregados(empregados)
     
