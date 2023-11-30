@@ -62,6 +62,8 @@ def listaProdutos(Produtos):
     print("\n----------------------------------------------------------------")
     print("Lista de produtos:")
     
+    Produtos.sort(key=lambda produto: produto['preco'], reverse=True)
+
     for i in range(0, len(Produtos), 10):
         print("Codigo".ljust(13),"\t-\tNome".ljust(25), "\t-\tPreço")
 
