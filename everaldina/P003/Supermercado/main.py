@@ -1,7 +1,26 @@
-from supermercado import Supermercado as sp
+from supermercado import Supermercado
 
 def main():
-    opcao = 0
+    sp = Supermercado()
+    opcao = -1
+    
+    sp.inserir_produto("Arroz", 10.50)
+    sp.inserir_produto("Feijão", 7.50)
+    sp.inserir_produto("Macarrão", 5.50)
+    sp.inserir_produto("Farinha", 3.50)
+    sp.inserir_produto("Açucar", 4.50)
+    sp.inserir_produto("Café", 6.50)
+    sp.inserir_produto("Óleo", 8.50)
+    sp.inserir_produto("Sal", 2.50)
+    sp.inserir_produto("Leite", 3.50)
+    sp.inserir_produto("Manteiga", 5.50)
+    sp.inserir_produto("Queijo", 7.50)
+    sp.inserir_produto("Presunto", 9.50)
+    sp.inserir_produto("Mortadela", 11.50)
+    sp.inserir_produto("Pão", 1.50)
+    sp.inserir_produto("Biscoito", 3.50)
+    sp.inserir_produto("Bolacha", 5.50)
+    
     
     while opcao != 0:
         print("1. Inserir produto")
@@ -21,36 +40,40 @@ def main():
                 
         match opcao:
             case 1:
-                print("------ADICIONAR PRODUTO------")
+                print("\n------ADICIONAR PRODUTO------")
                 nome = input("Digite o nome do produto: ")
                 preco = input("Digite o preço do produto: ")
                 
+                
                 try:
-                    sp.inserir_produto(nome, preco)
+                    if(sp.inserir_produto(nome, preco)):
+                        print("Produto inserido com sucesso.")
                 except ValueError as e:
-                    print(e)
+                    print(str(e))
                     
             case 2:
-                print("------REMOVER PRODUTO------")
+                print("\n------REMOVER PRODUTO------")
                 id = input("Digite o código ou nome do produto: ")
                 try:
-                    sp.remover_produto(id)
-                    print("Produto removido com sucesso.")
+                    if(sp.remover_produto(id)):
+                        print("Produto removido com sucesso.")
+                    else:
+                        print("Produto não encontrado.")
                 except ValueError as e:
                     print(e)
             case 3:
-                print("------LISTAR PRODUTOS------")
+                print("\n------LISTAR PRODUTOS------")
                 sp.listar_produtos()
             case 4:
-                print("------BUSCAR PRODUTOS------")
+                print("\n------BUSCAR PRODUTOS------")
                 codigo = input("Digite o código do produto: ")
                 
                 print("\nO preço do produto é R$" + str(sp.buscar_preco(codigo)))
             case 0:
-                print("Saindo...")
+                print("\nSaindo...")
             case _:
                 print("Opção inválida. Digite novamente.")
-
+        input()
 
 if __name__ == "__main__":
     main()

@@ -16,13 +16,25 @@ class Supermercado:
         self.__qntd_produtos = qntd_produtos
     
     def inserir_produto(self, nome, preco):
+        if nome == "" or nome == None:
+            raise ValueError("Nome invalido")
         if not nome.capitalize()[0].isalpha():
             raise ValueError("Nome invalido")
-        else:
-            preco_formatado = int(str(preco)[0: str(preco).find(".") + 3])
-            p = {"codigo": Supermercado.__id, "nome": nome, "preco": preco_formatado}
-            self.__produtos.append(p)
-            Supermercado.__id = str(int(Supermercado.__id) + 1).zfill(13)
+       
+        try:
+            preco = float(preco)
+        except ValueError:
+            raise ValueError("Preco invalido")
+        
+        preco_formatado = float(str(preco)[0: str(preco).find(".") + 3])
+        
+        if preco_formatado < 0:
+            raise ValueError("Preco invalido")
+        
+        p = {"codigo": Supermercado.__id, "nome": nome, "preco": preco_formatado}
+        self.__produtos.append(p)
+        Supermercado.__id = str(int(Supermercado.__id) + 1).zfill(13)
+        return True
         
     def remover_produto(self, identificador):
         if type(identificador) == int:
@@ -45,7 +57,8 @@ class Supermercado:
         for i in range(0, len(lista_ordenada), 10):
             sub_lista = lista_ordenada[i: i + 10]
             for p in sub_lista:
-                print("Cod.: " + p["codigo"] + " - " + p["nome"] + " - R$" + p["preco"])
+                print("Cod.: " + p["codigo"] + " - " + p["nome"] + " - R$" + "{:.2f}".format(p["preco"]))
+            input()
 
     def buscar_preco(self, cod):
         for p in self.__produtos:
