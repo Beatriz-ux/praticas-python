@@ -14,17 +14,30 @@ def carrega_empregados():
         pass
     return lista
 
-def salva_empregados(empregados):
+def salva_empregados(empregados): 
     with open("empregados.json", "w") as arquivo:
         for e in empregados:
-            empregados.dump(e, arquivo)
+            json.dump(e, arquivo)
             arquivo.write("\n")
 
 def imprime_empregados(empregados):
-    pass
+    for e in empregados:
+        print("Nome: " + e['nome'] + ' ' + e['sobrenome'] +" | RG: " + e['rg'])
+        print(" - Ano de Nascimento: " + str(e['ano_nascimento']))
+        print(" - Salário: R$" + "{:.2f}".format(e["salario"]))
+        print(" - Ano de Admissão: " + str(e['ano_admissao']))
+        print()
 
 def main():
-    pass
+    empregados = carrega_empregados()
+    
+    imprime_empregados(empregados)
+    
+    #reajusta_dez_porcento(empregados)
+    #imprime_empregados(empregados)
+    
+    salva_empregados(empregados)
+    
 
 if __name__ == "__main__":
     main()
