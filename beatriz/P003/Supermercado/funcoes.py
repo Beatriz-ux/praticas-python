@@ -31,6 +31,9 @@ def excluirProduto(lista, codigo):
     if posicao == -1:
         raise ValueError("Produto não encontrado")
     print("Removendo produto: " + lista[posicao]["nome"])
+    lista.pop(posicao)
+    
+
 def buscarProduto(lista, codigo):
     for indice, produto in enumerate(lista):
         if produto["codigo"] == codigo:
@@ -69,3 +72,5 @@ def consultarPrecos(lista, codigo):
     print("Produto: " + produto["nome"])
     print("Preço: " + '{:.2f}'.format(produto["preco"]))
 
+def criaCodigo(semente):
+    return str(semente + 1).zfill(13)
