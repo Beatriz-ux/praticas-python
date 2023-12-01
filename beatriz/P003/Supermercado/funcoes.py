@@ -36,3 +36,28 @@ def buscarProduto(lista, codigo):
         if produto["codigo"] == codigo:
             return indice, produto
     return -1, None
+
+def listarProdutos(lista):
+    pagina = 1
+    qtd_por_pagina = 10
+    if len(lista) == 0:
+        raise ValueError("Lista vazia")
+    print()
+    while(True):
+        print("Página: " + str(pagina))
+        print("{:<4} {:<13} {:15} {:<10}".format("ID", "Código","Nome","Preço"))
+        for indice, produto in enumerate(lista):
+            if indice >= (pagina - 1) * qtd_por_pagina and indice < pagina * qtd_por_pagina:
+                print("{:<4} {:<13} {:15} {:<10}".format(str(indice),produto["codigo"],produto["nome"],'{:.2f}'.format(produto["preco"])))
+        print("1 - Próxima página")
+        print("2 - Página anterior")
+        print("3 - Voltar")
+        opcao = int(input())
+        if opcao == 1:
+            pagina = pagina + 1
+        elif opcao == 2:
+            pagina = pagina - 1
+        elif opcao == 3:
+            break
+        else:
+            print("Opção inválida")
