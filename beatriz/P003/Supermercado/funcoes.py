@@ -31,4 +31,8 @@ def excluirProduto(lista, codigo):
     if posicao == -1:
         raise ValueError("Produto não encontrado")
     print("Removendo produto: " + lista[posicao]["nome"])
-    lista.pop(posicao)
+def buscarProduto(lista, codigo):
+    for indice, produto in enumerate(lista):
+        if produto["codigo"] == codigo:
+            return indice, produto
+    return -1, None
