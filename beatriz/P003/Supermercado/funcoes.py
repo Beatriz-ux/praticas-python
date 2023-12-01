@@ -9,3 +9,18 @@ def listaMenu():
     print("Digite a opção desejada: ",end="")
     opcao = int(input())
     return opcao
+
+def cadastrarProduto(codigo,nome,preco):
+    if preco <= 0 or isinstance(preco, float) == False:
+        raise ValueError("Preço inválido")
+    if nome == "" or nome[0].isdigit() == True:
+        raise ValueError("Nome inválido")
+    
+    nome = nome.capitalize()
+    preco = round(preco,2)
+    novo_produto ={
+        "codigo": codigo,
+        "nome": nome,
+        "preco": preco
+    }
+    return novo_produto
