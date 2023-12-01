@@ -3,7 +3,6 @@ from empresa import *
 def main():
     pass
 
-
 if __name__ == "__main__":
     main()
 
@@ -33,10 +32,7 @@ for i in range(len(listaAux)):
             listaFuncionarios.append(funcAux)
             funcAux = {"nome": '', "sobrenome": '', 'anoNascimento': '', 'rg': '', "anoAdmissao": '', 'salario': ''} 
 
-    
-
 acao = ''
-
 while(acao != '0'):
     print("\n---Menu da Empresa---")
     print("1 - Cadastrar um novo funcionario")
@@ -82,16 +78,5 @@ for i in listaFuncionarios:
     file.write("{}\n".format(str(i['anoAdmissao'])))
     file.write("{}\n".format(str(i['salario'])))
 
-
 file.close()
 print("Arquivo salvo com sucesso!")
-
-'''
-for i in listaFuncionarios:
-    file.write(i['nome'], '/n')
-    file.write(i['sobrenome'],'/n')
-    file.write(str(i['anoNascimento']),'/n')
-    file.write(i['rg'])
-    file.write(str(i['anoAdmissao']),'/n')
-    file.write(str(i['salario']), '/n')
-'''
