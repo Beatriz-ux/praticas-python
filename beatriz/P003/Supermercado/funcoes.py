@@ -24,3 +24,11 @@ def cadastrarProduto(codigo,nome,preco):
         "preco": preco
     }
     return novo_produto
+def excluirProduto(lista, codigo):
+    if len(lista) == 0:
+        raise ValueError("Lista vazia")
+    posicao, _ =buscarProduto(lista, codigo)
+    if posicao == -1:
+        raise ValueError("Produto não encontrado")
+    print("Removendo produto: " + lista[posicao]["nome"])
+    lista.pop(posicao)
