@@ -61,3 +61,11 @@ def listarProdutos(lista):
             break
         else:
             print("Opção inválida")
+
+def consultarPrecos(lista, codigo):
+    posicao, produto = buscarProduto(lista, codigo)
+    if posicao == -1:
+        raise ValueError("Produto não encontrado")
+    print("Produto: " + produto["nome"])
+    print("Preço: " + '{:.2f}'.format(produto["preco"]))
+
