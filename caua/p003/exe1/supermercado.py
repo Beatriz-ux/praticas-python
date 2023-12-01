@@ -54,7 +54,6 @@ def excluirProduto(lista):
         print("Codigo nao encontrado")
         return
     
-    print(index)
     lista.pop(index)
     print("Produto excluido com sucesso")
 
