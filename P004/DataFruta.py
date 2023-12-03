@@ -74,22 +74,6 @@ class Data:
                     return True
         return False
     
-	
-	
-	Data (int _dia, int _mes, int _ano) {
-		dia = _dia;
-		mes = _mes;
-		ano = _ano;
-	}
-	string toString() {
-		string ret = "";
-		ret.append(to_string(dia));
-		ret.append("/");
-		ret.append(to_string(mes));
-		ret.append("/");
-		ret.append(to_string(ano));
-		return ret;
-	}
 
 class AnaliseDados(ABC): 
 
@@ -161,7 +145,40 @@ class ListaDatas(AnaliseDados):
         elementos vão existir na lista e depois
         solicita a digitação de cada um deles
         '''
-        pass
+        
+        
+        print("------------------Entrada de datas------------------")
+        # Pergunta a quantidade de elementos e verifica se é um número inteiro
+        try:
+            qnt = int(input("Quantidade de elementos na lista de datas: "))
+        except Exception:
+            print("Quantidade inválida de elementos")
+            return
+        
+        for i in range(qnt):
+            # Pergunta a data e verifica se é uma data válida
+            # 01/34/6789
+            invalido = True
+            while(invalido):
+                data = input("Digite a data no formato dd/mm/aaaa: ")
+                try:
+                    dia, mes, ano = data.split("/")
+                    
+                    if dia.isnumeric() == False:
+                        raise ValueError("Dia inválido")
+                    if mes.isnumeric() == False:
+                        raise ValueError("Mes inválido")
+                    if mes.isnumeric() == False:
+                        raise ValueError("Ano inválido")
+                    
+                    data = Data(int(dia), int(mes), int(ano))
+                    self.__lista.append(data)
+                    print("Data adicionada com sucesso")
+                    invalido = False
+                except ValueError as e:
+                    print(str(e))
+        
+        
     
     def mostraMediana(self):
         '''
@@ -183,7 +200,10 @@ class ListaDatas(AnaliseDados):
         pass
     
     def __str__(self):
-        pass
+        strLista = "--------Lista de Datas--------\n"
+        for data in self.__lista:
+            strLista += str(data) + "\n"
+        return strLista
 
 class ListaSalarios(AnaliseDados):
 
@@ -258,21 +278,27 @@ class ListaIdades(AnaliseDados):
         pass
 
 def main():
-    nomes = ListaNomes()
+    #nomes = ListaNomes()
     datas = ListaDatas()
-    salarios = ListaSalarios()
-    idades = ListaIdades()
+    #salarios = ListaSalarios()
+    #idades = ListaIdades()
 
-    listaListas = [nomes, datas, salarios, idades]
+    #listaListas = [nomes, datas, salarios, idades]
+    #listaListas = [nomes]
+    listaListas = [datas]
+    #listaListas = [salarios]
+    #listaListas = [idades]
 
     for lista in listaListas:
         lista.entradaDeDados()
-        lista.mostraMediana()
-        lista.mostraMenor()
-        lista.mostraMaior()
+        #lista.mostraMediana()
+        #lista.mostraMenor()
+        #lista.mostraMaior()
+        print(datas)
         print("___________________")
 
     print("Fim do teste!!!")
+    
 
 if __name__ == "__main__":
     main()
