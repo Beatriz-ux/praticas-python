@@ -359,12 +359,12 @@ class ListaIdades(AnaliseDados):
 def main():
     nomes = ListaNomes()
     datas = ListaDatas()
-    #salarios = ListaSalarios()
-    #idades = ListaIdades()
+    salarios = ListaSalarios()
+    idades = ListaIdades()
 
-    #listaListas = [nomes, datas, salarios, idades]
-    listaListas = [nomes]
-    listaListas = [datas]
+    listaListas = [nomes, datas, salarios, idades]
+    # listaListas = [nomes]
+    # listaListas = [datas]
     #listaListas = [salarios]
     #listaListas = [idades]
 
