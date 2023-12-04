@@ -165,15 +165,15 @@ class ListaDatas(AnaliseDados):
                     dia, mes, ano = data.split("/")
                     
                     if dia.isnumeric() == False:
-                        raise ValueError("Dia inválido")
+                        raise ValueError("Dia inválido.")
                     if mes.isnumeric() == False:
-                        raise ValueError("Mes inválido")
+                        raise ValueError("Mes inválido.")
                     if mes.isnumeric() == False:
-                        raise ValueError("Ano inválido")
+                        raise ValueError("Ano inválido.")
                     
                     data = Data(int(dia), int(mes), int(ano))
                     self.__lista.append(data)
-                    print("Data adicionada com sucesso")
+                    print("Data adicionada com sucesso!!")
                     invalido = False
                 except ValueError as e:
                     print(str(e))
@@ -185,19 +185,43 @@ class ListaDatas(AnaliseDados):
         Este método ordena a lista e mostra o
         elemento que está na metade da lista
         '''
-        pass    
+        
+        if len(self.__lista) == 0:
+            print("Lista de datas vazia.")
+        else:
+            self.__lista.sort()
+            tamanho = len(self.__lista)
+            if len(self.__lista) % 2 == 0:
+                mediana =  self.__lista[(tamanho // 2)-1]
+            else:
+                mediana =  self.__lista[tamanho // 2]
+            print("Mediana de datas: ", mediana)
      
     def mostraMenor(self):
         '''
         Este método retorna o menos elemento da lista
         '''
-        pass
+        if len(self.__lista) == 0:
+            print("Lista de datas vazia.")
+        else:
+            menor = self.__lista[0]
+            for data in self.__lista:
+                if data < menor:
+                    menor = data
+            print("Menor data: ", menor)
     
     def mostraMaior(self):
         '''
         Este método retorna o maior elemento da lista
         '''
-        pass
+        if len(self.__lista) == 0:
+            print("Lista de datas vazia.")
+        else:
+            maior = self.__lista[0]
+            for data in self.__lista:
+                if data > maior:
+                    maior = data
+            print("Maior data: ", maior)
     
     def __str__(self):
         strLista = "--------Lista de Datas--------\n"
@@ -285,16 +309,15 @@ def main():
 
     #listaListas = [nomes, datas, salarios, idades]
     #listaListas = [nomes]
-    listaListas = [datas]
+    #listaListas = [datas]
     #listaListas = [salarios]
     #listaListas = [idades]
 
     for lista in listaListas:
         lista.entradaDeDados()
-        #lista.mostraMediana()
-        #lista.mostraMenor()
-        #lista.mostraMaior()
-        print(datas)
+        lista.mostraMediana()
+        lista.mostraMenor()
+        lista.mostraMaior()
         print("___________________")
 
     print("Fim do teste!!!")
