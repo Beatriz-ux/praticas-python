@@ -332,6 +332,35 @@ class ListaIdades(AnaliseDados):
         elementos vão existir na lista e depois
         solicita a digitação de cada um deles
         '''
+
+        print("--------------Entrada de idades--------------")
+        try:
+            qtde = int(input("Quantidade de idades a serem incluidas: "))
+        except Exception:
+            print("Quantidade inválida de idades.")
+            return
+        
+        if qtde < 0:
+            print("Quantidade inválida de idades.")
+            return
+        
+        listaAuxiliar = []
+        for i in range(qtde):
+            try:
+                idade = int(input("Idade " + (i+1) + ":"))
+            except Exception:
+                print("Idade invalida.")
+                return
+            
+            if idade < 0:
+                print("Idade invalida.")
+                return
+            
+            listaAuxiliar.append(idade)
+        
+        for i in listaAuxiliar:
+            self.__lista.append(i)
+
         pass
     
     def mostraMediana(self):
@@ -339,22 +368,68 @@ class ListaIdades(AnaliseDados):
         Este método ordena a lista e mostra o
         elemento que está na metade da lista
         '''
+
+        if len(self.__lista) == 0:
+            print("A lista esta vazia")
+            return
+        
+        listaAuxiliar = self.__lista.copy()
+        listaAuxiliar.sort()
+        tamanho = len(listaAuxiliar)
+        mediana = 0;
+
+        if tamanho % 2 == 0:
+            mediana = (listaAuxiliar[tamanho/2] + listaAuxiliar[(tamanho/2) - 1]) / 2
+        else:
+            mediana = listaAuxiliar[tamanho//2]
+
+        print("Mediana de idades: {mediana}")
         pass    
     
     def mostraMenor(self):
         '''
-        Este método retorna o menos elemento da lista
+        Este método retorna o menor elemento da lista
         '''
+
+        if len(self.__lista) == 0:
+            print("A lista esta vazia")
+            return
+        
+        menor = self.__lista[0]
+
+        for i in self.__lista:
+            if i < menor:
+                menor = i
+
+        print("Menor idade: {menor}")
         pass
     
     def mostraMaior(self):
         '''
         Este método retorna o maior elemento da lista
         '''
+
+        if len(self.__lista) == 0:
+            print("A lista esta vazia")
+            return
+        
+        maior = self.__lista[0]
+
+        for i in self.__lista:
+            if i > maior:
+                maior = i
+
+        print("Maior idade: {maior}")
         pass
 
     def __str__(self):
-        pass
+        strLista = "--------Lista de Idades--------\n"
+
+        for i in self.__lista:
+            strLista += i + "\n"
+        
+        return strLista
+    pass
 
 def main():
     nomes = ListaNomes()
