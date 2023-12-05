@@ -107,6 +107,11 @@ class ListaNomes(AnaliseDados):
         super().__init__(type("String"))
         self.__lista = []        
 
+    @property
+    def lista(self):
+        return self.__lista
+    
+
     def entradaDeDados(self):
         '''
         Este método pergunta ao usuários quantos
@@ -206,7 +211,11 @@ class ListaDatas(AnaliseDados):
         
     def __init__(self):
         super().__init__(type(Data))
-        self.__lista = []        
+        self.__lista = []
+    
+    @property
+    def lista(self):
+        return self.__lista      
     
     def entradaDeDados(self):
         '''
@@ -323,6 +332,10 @@ class ListaSalarios(AnaliseDados):
         super().__init__(type(float))
         self.__lista = []        
 
+    @property
+    def lista(self):
+        return self.__lista
+    
     def entradaDeDados(self):
         '''
         Este método pergunta ao usuários quantos
@@ -421,6 +434,10 @@ class ListaIdades(AnaliseDados):
     def __init__(self):
         super().__init__(type(int))
         self.__lista = []        
+    
+    @property
+    def lista(self):
+        return self.__lista
     
     def entradaDeDados(self):
         '''
@@ -540,6 +557,7 @@ def main():
 
     listaListas = [nomes, datas, salarios, idades]
 
+    # Teste geral de classes
     for lista in listaListas:
         lista.entradaDeDados()
         lista.listarEmOrdem()
@@ -548,6 +566,16 @@ def main():
         lista.mostraMenor()
         lista.mostraMaior()
         print("___________________")
+        print("\n")
+        
+    # As duas listas, nomes e salarios são percorridas simultanemente 
+    # sem a necessidade de um contador.
+    for nome, salario in zip(nomes.lista, salarios.lista):
+        print(f"{nome} recebe R${salario:.2f}")
+    
+    # Teste iterador map
+    
+    # Teste iterador filter
         
 
     print("Fim do teste!!!")
