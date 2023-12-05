@@ -414,7 +414,6 @@ class ListaIdades(AnaliseDados):
         for i in listaAuxiliar:
             self.__lista.append(i)
 
-        pass
     
     def mostraMediana(self):
         '''
@@ -436,8 +435,7 @@ class ListaIdades(AnaliseDados):
         else:
             mediana = listaAuxiliar[tamanho//2]
 
-        print("Mediana de idades: {mediana}")
-        pass    
+        print("Mediana de idades: {mediana}")    
     
     def mostraMenor(self):
         '''
@@ -455,7 +453,6 @@ class ListaIdades(AnaliseDados):
                 menor = i
 
         print("Menor idade: {menor}")
-        pass
     
     def mostraMaior(self):
         '''
@@ -473,7 +470,6 @@ class ListaIdades(AnaliseDados):
                 maior = i
 
         print("Maior idade: {maior}")
-        pass
 
     def __str__(self):
         strLista = "--------Lista de Idades--------\n"
@@ -482,7 +478,6 @@ class ListaIdades(AnaliseDados):
             strLista += i + "\n"
         
         return strLista
-    pass
 
 def main():
     nomes = ListaNomes()
