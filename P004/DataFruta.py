@@ -203,7 +203,7 @@ class ListaNomes(AnaliseDados):
         else:
             listaOrdenada = sorted(self.__lista)
 
-            print("--------Lista de Nomes--------")
+            print("--------Lista ordenada de Nomes--------")
             for nome in listaOrdenada:
                 print(nome)
 	
@@ -301,7 +301,7 @@ class ListaDatas(AnaliseDados):
             print("Maior data: ", maior)
     
     def __str__(self):
-        strLista = "--------Lista de Datas--------\n"
+        strLista = "--------Lista ordenada de Datas--------\n"
         for data in self.__lista:
             strLista += str(data) + "\n"
         return strLista
@@ -425,7 +425,7 @@ class ListaSalarios(AnaliseDados):
         else:
             listaOrdenada = sorted(self.__lista)
 
-            print("--------Lista de Salarios--------")
+            print("--------Lista ordenada de Salarios--------")
             for salario in listaOrdenada:
                 print(salario)
 
@@ -545,7 +545,7 @@ class ListaIdades(AnaliseDados):
         else:
             listaOrdenada = sorted(self.__lista)
 
-            print("--------Lista de Idades--------")
+            print("--------Lista ordenada de Idades--------")
             for idade in listaOrdenada:
                 print(idade)
 
@@ -577,16 +577,26 @@ def main():
     
     # O iterador map aplica uma função de ajuste de 10% em todos os itens da lista
     print("Teste de iterador map")
-    print("Salarios originais: \n", salarios.listarEmOrdem)
+    print("Salarios originais:")
+    for salario in salarios.lista:
+        print(f"R${salario:.2f}")
     salarioAjustado = map(lambda x: x * 1.1, salarios.lista)
     print("Salarios ajustados em 10%: \n")
     for salario in salarioAjustado:
-        print(salario)
+        print(f"R${salario:.2f}")
+    print("\n")
     
-    # Teste iterador filter
-        
-
-    print("Fim do teste!!!")
+    # Recebe referencia de datas filtradas que sejam menores que 2019
+    print("Teste de iterador filter")
+    print("Datas Originais: \n")
+    datas.listarEmOrdem()
+    datasFiltradas = filter(lambda x: x.ano < 2019, datas.lista)
+    
+    # como o filtro retorna uma referencia, a mudança é feita tambem na lista original
+    for data in datasFiltradas:
+        data.dia = 1
+    print("Datas depois de modificacao: \n")
+    datas.listarEmOrdem()
     
 
 if __name__ == "__main__":
