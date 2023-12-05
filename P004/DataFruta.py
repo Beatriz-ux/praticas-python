@@ -570,10 +570,18 @@ def main():
         
     # As duas listas, nomes e salarios são percorridas simultanemente 
     # sem a necessidade de um contador.
+    print("Teste de iterador zip")
     for nome, salario in zip(nomes.lista, salarios.lista):
         print(f"{nome} recebe R${salario:.2f}")
+    print("\n")
     
-    # Teste iterador map
+    # O iterador map aplica uma função de ajuste de 10% em todos os itens da lista
+    print("Teste de iterador map")
+    print("Salarios originais: \n", salarios.listarEmOrdem)
+    salarioAjustado = map(lambda x: x * 1.1, salarios.lista)
+    print("Salarios ajustados em 10%: \n")
+    for salario in salarioAjustado:
+        print(salario)
     
     # Teste iterador filter
         
