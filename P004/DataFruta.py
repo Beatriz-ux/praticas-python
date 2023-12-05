@@ -105,7 +105,11 @@ class ListaNomes(AnaliseDados):
     
     def __init__(self):
         super().__init__(type("String"))
-        self.__lista = []        
+        self.__lista = []      
+
+    @property
+    def lista(self):
+        return self.__lista  
 
     def entradaDeDados(self):
         '''
@@ -210,7 +214,11 @@ class ListaDatas(AnaliseDados):
         
     def __init__(self):
         super().__init__(type(Data))
-        self.__lista = []        
+        self.__lista = [] 
+
+    @property
+    def lista(self):
+        return self.__lista      
     
     def entradaDeDados(self):
         '''
@@ -251,8 +259,6 @@ class ListaDatas(AnaliseDados):
                 except ValueError as e:
                     print(str(e))
         
-        
-    
     def mostraMediana(self):
         '''
         Este método ordena a lista e mostra o
@@ -322,7 +328,11 @@ class ListaSalarios(AnaliseDados):
 
     def __init__(self):
         super().__init__(type(float))
-        self.__lista = []        
+        self.__lista = []  
+
+    @property
+    def lista(self):
+        return self.__lista      
 
     def entradaDeDados(self):
         '''
@@ -421,6 +431,10 @@ class ListaIdades(AnaliseDados):
     def __init__(self):
         super().__init__(type(int))
         self.__lista = []        
+    
+    @property
+    def lista(self):
+        return self.__lista
     
     def entradaDeDados(self):
         '''
@@ -548,8 +562,6 @@ def main():
     # listaListas = [salarios]
     # listaListas = [idades]
 
-
-
     for lista in listaListas:
         lista.entradaDeDados()
         lista.mostraMediana()
@@ -559,6 +571,48 @@ def main():
         print("___________________")
 
     print("Fim do teste!!!")
+
+    print("\n")
+
+    print("--------Iterador zip--------")
+    nomeSalario = zip(nomes.lista, salarios.lista)  # Cria um iterador zip, que é uma lista de tuplas dos elementos das listas passadas como parâmetro
+
+    for nome, salario in nomeSalario:
+        print(f'{nome} recebe R${salario:.2f}')
+
+    print()
+
+    print("--------Iterador map--------")
+    
+    print("Salarios: ")
+    for salario in salarios.lista:
+        print(f'R${salario:.2f}')
+
+    salariosReajustados = map(lambda salario: salario * 1.1, salarios.lista)    # Cria um iterador map, que é uma lista com os elementos da lista passada como parâmetro modificados pela função lambda
+
+    print()
+
+    print("Salarios reajustados: ")
+    for salario in salariosReajustados:
+        print(f'R${salario:.2f}')
+    
+    print()
+    print("--------Iterador filter--------")
+    print("Datas: ")
+    for data in datas.lista:
+        print(data)
+
+    datasAnteriores = filter(lambda data: data.ano < 2019, datas.lista)   # Cria um iterador filter, que é uma lista com os elementos da lista passada como parâmetro que atendem a condição da função lambda
+
+    #modifica as datas para o dia 1 por referência
+    for data in datasAnteriores:
+        data.dia = 1
+    
+    print()
+    print("Datas modificadas: ")
+    for data in datas.lista:
+        print(data)
+
 
 if __name__ == "__main__":
     main()
