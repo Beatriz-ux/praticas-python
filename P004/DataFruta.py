@@ -244,12 +244,12 @@ class ListaDatas(AnaliseDados):
         if len(self.__lista) == 0:
             print("Lista de datas vazia.")
         else:
-            self.__lista.sort()
+            lista_ordenada = sorted(self.__lista)
             tamanho = len(self.__lista)
             if len(self.__lista) % 2 == 0:
-                mediana =  self.__lista[(tamanho // 2)-1]
+                mediana =  lista_ordenada[(tamanho // 2)-1]
             else:
-                mediana =  self.__lista[tamanho // 2]
+                mediana =  lista_ordenada[tamanho // 2]
             print("Mediana de datas: ", mediana)
      
     def mostraMenor(self):
