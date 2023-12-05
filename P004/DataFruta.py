@@ -400,7 +400,7 @@ class ListaIdades(AnaliseDados):
         listaAuxiliar = []
         for i in range(qtde):
             try:
-                idade = int(input("Idade " + (i+1) + ":"))
+                idade = int(input("Idade: "))
             except Exception:
                 print("Idade invalida.")
                 return
@@ -431,11 +431,11 @@ class ListaIdades(AnaliseDados):
         mediana = 0;
 
         if tamanho % 2 == 0:
-            mediana = (listaAuxiliar[tamanho/2] + listaAuxiliar[(tamanho/2) - 1]) / 2
+            mediana = (listaAuxiliar[tamanho//2] + listaAuxiliar[(tamanho//2) - 1]) / 2
         else:
             mediana = listaAuxiliar[tamanho//2]
 
-        print("Mediana de idades: {mediana}")    
+        print("Mediana de idades: ", mediana)    
     
     def mostraMenor(self):
         '''
@@ -452,7 +452,7 @@ class ListaIdades(AnaliseDados):
             if i < menor:
                 menor = i
 
-        print("Menor idade: {menor}")
+        print("Menor idade: ", menor)
     
     def mostraMaior(self):
         '''
@@ -469,7 +469,7 @@ class ListaIdades(AnaliseDados):
             if i > maior:
                 maior = i
 
-        print("Maior idade: {maior}")
+        print("Maior idade ", maior)
 
     def __str__(self):
         strLista = "--------Lista de Idades--------\n"
@@ -488,8 +488,8 @@ def main():
     # listaListas = [nomes, datas, salarios, idades]
     # listaListas = [nomes]
     # listaListas = [datas]
-    listaListas = [salarios]
-    #listaListas = [idades]
+    #listaListas = [salarios]
+    listaListas = [idades]
 
     for lista in listaListas:
         lista.entradaDeDados()
