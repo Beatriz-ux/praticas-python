@@ -296,29 +296,82 @@ class ListaSalarios(AnaliseDados):
         elementos vão existir na lista e depois
         solicita a digitação de cada um deles
         '''
-        pass
+        print("------------------Entrada de Salarios------------------")
+        # Pergunta a quantidade de elementos e verifica se é um número inteiro
+        try:
+            qnt = int(input("Quantidade de elementos na lista de salarios: "))
+        except Exception:
+            print("Quantidade inválida de elementos")
+            return
+        
+        for i in range(qnt):
+            salario = 0
+            invalido = True
+            while invalido:
+                try:
+                    salario = float(input("Digite o valor do salario: "))
+                except:
+                    print("Valor inválido.")
+                
+                if salario < 0:
+                    print("Salario não pode ser nagativo")
+                else:
+                    self.__lista.append(salario)
+                    print("Salario adicionado com sucesso!!")
+                    invalido = False
+
+                
+                
+
+                
 
     def mostraMediana(self):
         '''
         Este método ordena a lista e mostra o
         elemento que está na metade da lista
         '''
-        pass    
+        if len(self.__lista) == 0:
+            print("Lista de salarios vazia.")
+            return
+        ordenados = sorted(self.__lista)
+        tamanho = len(self.__lista)
+        mediana = -1
+        if tamanho % 2 == 0:
+            mediana1 = ordenados[(tamanho // 2) - 1]
+            mediana2 = ordenados[tamanho // 2]
+            mediana = (mediana1 + mediana2) / 2
+        else:
+            mediana = ordenados[tamanho // 2]
+
+        print("Mediana de salarios: ", mediana)
 
     def mostraMenor(self):
         '''
         Este método retorna o menos elemento da lista
         '''
-        pass
+        if len(self.__lista) == 0:
+            print("Lista de salarios vazia.")
+            return
+        ordenada = sorted(self.__lista)
+        menor = ordenada[0]
+        print("Menor salario: ", menor)
 
     def mostraMaior(self):
         '''
         Este método retorna o maior elemento da lista
         '''
-        pass
+        if len(self.__lista) == 0:
+            print("Lista de salarios vazia.")
+            return
+        ordenada = sorted(self.__lista)
+        maior = ordenada[-1]
+        print("Maior salario: ", maior)
     
     def __str__(self):
-        pass
+        strLista = "--------Lista de Salarios--------\n"
+        for salario in self.__lista:
+            strLista += str(salario) + "\n"
+        return strLista
 
 class ListaIdades(AnaliseDados):
     
@@ -362,10 +415,10 @@ def main():
     salarios = ListaSalarios()
     idades = ListaIdades()
 
-    listaListas = [nomes, datas, salarios, idades]
+    # listaListas = [nomes, datas, salarios, idades]
     # listaListas = [nomes]
     # listaListas = [datas]
-    #listaListas = [salarios]
+    listaListas = [salarios]
     #listaListas = [idades]
 
     for lista in listaListas:
