@@ -580,22 +580,23 @@ def main():
     print("Salarios originais:")
     for salario in salarios.lista:
         print(f"R${salario:.2f}")
+    print("\n")
     salarioAjustado = map(lambda x: x * 1.1, salarios.lista)
-    print("Salarios ajustados em 10%: \n")
+    print("Salarios ajustados em 10%:")
     for salario in salarioAjustado:
         print(f"R${salario:.2f}")
     print("\n")
     
     # Recebe referencia de datas filtradas que sejam menores que 2019
     print("Teste de iterador filter")
-    print("Datas Originais: \n")
+    print("Datas Originais:")
     datas.listarEmOrdem()
     datasFiltradas = filter(lambda x: x.ano < 2019, datas.lista)
     
     # como o filtro retorna uma referencia, a mudança é feita tambem na lista original
     for data in datasFiltradas:
         data.dia = 1
-    print("Datas depois de modificacao: \n")
+    print("Datas depois de modificacao: ")
     datas.listarEmOrdem()
     
 
