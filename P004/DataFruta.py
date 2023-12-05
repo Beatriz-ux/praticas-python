@@ -96,6 +96,10 @@ class AnaliseDados(ABC):
     @abstractmethod
     def mostraMaior(self):
         pass
+    
+    @abstractmethod
+    def listarEmOrdem(self):
+        pass
 
 class ListaNomes(AnaliseDados):
     
@@ -187,6 +191,16 @@ class ListaNomes(AnaliseDados):
             strLista += nome + "\n"
         
         return strLista
+    
+    def listarEmOrdem(self):
+        if len(self.__lista) == 0:
+            print("Lista de nomes vazia.")
+        else:
+            listaOrdenada = sorted(self.__lista)
+
+            print("--------Lista de Nomes--------")
+            for nome in listaOrdenada:
+                print(nome)
 	
 class ListaDatas(AnaliseDados):
         
@@ -212,7 +226,6 @@ class ListaDatas(AnaliseDados):
         
         for i in range(qnt):
             # Pergunta a data e verifica se é uma data válida
-            # 01/34/6789
             invalido = True
             while(invalido):
                 data = input("Digite a data no formato dd/mm/aaaa: ")
@@ -283,6 +296,26 @@ class ListaDatas(AnaliseDados):
         for data in self.__lista:
             strLista += str(data) + "\n"
         return strLista
+    
+    def listarEmOrdem(self):
+        '''
+            Este método mostra a lista de datas em ordem.
+            Para isso ele usa o metodo sorted() que retorna
+            uma lista ordenada.
+            O metodo sorted() (assim como o sort()) utiliza 
+            o metodo __lt__ (operador <) para comparar os 
+            elementos da lista, então como ele ja esta 
+            implementado na classe Data não é necessário
+            implementar um algoritmo de ordenação.
+        '''
+        if len(self.__lista) == 0:
+            print("Lista de datas vazia.")
+        else:
+            listaOrdenada = sorted(self.__lista)
+
+            print("--------Lista de Datas--------")
+            for data in listaOrdenada:
+                print(data)
 
 class ListaSalarios(AnaliseDados):
 
@@ -372,6 +405,16 @@ class ListaSalarios(AnaliseDados):
         for salario in self.__lista:
             strLista += str(salario) + "\n"
         return strLista
+    
+    def listarEmOrdem(self):
+        if len(self.__lista) == 0:
+            print("Lista de salarios vazia.")
+        else:
+            listaOrdenada = sorted(self.__lista)
+
+            print("--------Lista de Salarios--------")
+            for salario in listaOrdenada:
+                print(salario)
 
 class ListaIdades(AnaliseDados):
     
@@ -478,6 +521,16 @@ class ListaIdades(AnaliseDados):
             strLista += i + "\n"
         
         return strLista
+    
+    def listarEmOrdem(self):
+        if len(self.__lista) == 0:
+            print("Lista de idades vazia.")
+        else:
+            listaOrdenada = sorted(self.__lista)
+
+            print("--------Lista de Idades--------")
+            for idade in listaOrdenada:
+                print(idade)
 
 def main():
     nomes = ListaNomes()
@@ -485,18 +538,17 @@ def main():
     salarios = ListaSalarios()
     idades = ListaIdades()
 
-    # listaListas = [nomes, datas, salarios, idades]
-    # listaListas = [nomes]
-    # listaListas = [datas]
-    listaListas = [salarios]
-    #listaListas = [idades]
+    listaListas = [nomes, datas, salarios, idades]
 
     for lista in listaListas:
         lista.entradaDeDados()
+        lista.listarEmOrdem()
+        print("___________________")
         lista.mostraMediana()
         lista.mostraMenor()
         lista.mostraMaior()
         print("___________________")
+        
 
     print("Fim do teste!!!")
     
