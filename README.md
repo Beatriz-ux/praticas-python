@@ -12,14 +12,11 @@ As pastas do repositório está organizado da seguinte forma:
 > Para as soluções feitas em grupo, sendo X a respectiva pratica a ser realizada
 - `P00X/`
 
-### Soluções
-- Semana 1: Introdução ao Python.
+### Soluções feitas em grupo
     - [P001](./P001/): A atividade envolve a manipulação de diferentes tipos de variáveis em Python, explorando conceitos como operadores aritméticos para inteiros, representação de números grandes, imutabilidade de variáveis numéricas e métodos disponíveis. Além disso, abrange a interação entre strings e números, como imprimir caracteres numéricos com seus códigos ASCII, modificando o comportamento do print, e explora caracteres especiais. Também inclui a separação e análise de strings, verificando ordem alfabética, palíndromos e comprimento. 
     - [P002](./P002/): Sistema de gerenciamento de tarefas, com as funcionalidades de : listar, registrar e marcar como concluída.
     - [P003](./P003/): Foi construido um sistema que faz parte de um dos serviços do mercado, o cadastramento de produtos, consulta , listagem e remoção. Nesse sistema foi trabalho conceitos de try, separação de arquivos e modularização. Na segunda parte foi realizado um sistema de empregados/funcionários capaz de cadastrar novos colaboradores, fazer reajuste de 10% e armazenar esse dados.
-
-
-
+     - [P004](./P004/):Foi realizado correção e implementação de métodos em classes que herdam de uma classe abstrata, demonstração de iteradores (zip, map e filter) e desenvolvimento de um menu para manipular diferentes listas de dados.
 
 
 ### Membros
