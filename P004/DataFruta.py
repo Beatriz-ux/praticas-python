@@ -559,6 +559,19 @@ def menu():
     datas = ListaDatas()
     salarios = ListaSalarios()
     idades = ListaIdades()
+    
+    listaListas = [nomes, datas, salarios, idades]
+
+    # Teste geral de classes
+    for lista in listaListas:
+        lista.entradaDeDados()
+        lista.listarEmOrdem()
+        print("___________________")
+        lista.mostraMediana()
+        lista.mostraMenor()
+        lista.mostraMaior()
+        print("___________________")
+        print("\n")
 
     while True:
         print("1. Incluir um nome na lista de nomes.")
