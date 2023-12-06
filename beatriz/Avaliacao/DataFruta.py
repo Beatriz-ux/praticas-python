@@ -194,6 +194,16 @@ class ListaNomes(AnaliseDados):
         
         return strLista
 	
+    def listarEmOrdem(self):
+        '''
+        Este método ordena a lista e mostra os
+        elementos em ordem crescente
+        '''
+        if len(self.__lista) == 0:
+            print("Lista de nomes vazia.")
+        else:
+            listaOrdenada = sorted(self.__lista)
+            print("Lista de nomes em ordem crescente:\n", listaOrdenada)
 
 class ListaDatas(AnaliseDados):
         
@@ -294,6 +304,20 @@ class ListaDatas(AnaliseDados):
             strLista += str(data) + "\n"
         return strLista
     
+    def listarEmOrdem(self):
+        '''
+        Este método ordena a lista e mostra os
+        elementos em ordem crescente, só é possivel ultilzar o metodo sort() pois a classe 
+        Data implementa os metodos __lt__ e __gt__ que fazem a comparação entre datas de forma particionada
+        '''
+        if len(self.__lista) == 0:
+            print("Lista de datas vazia.")
+        else:
+            lista_ordenada = sorted(self.__lista)
+            print("Lista de datas em ordem crescente:"  )
+            for data in lista_ordenada:
+                print(data)
+
 class ListaSalarios(AnaliseDados):
 
     def __init__(self):
@@ -381,6 +405,16 @@ class ListaSalarios(AnaliseDados):
             strLista += str(salario) + "\n"
         return strLista
     
+    def listarEmOrdem(self):
+        '''
+        Este método ordena a lista e mostra os
+        elementos em ordem crescente
+        '''
+        if len(self.__lista) == 0:
+            print("Lista de salarios vazia.")
+            return
+        ordenada = sorted(self.__lista)
+        print("Lista de salarios em ordem crescente:\n", ordenada)
 
 class ListaIdades(AnaliseDados):
     
@@ -488,6 +522,16 @@ class ListaIdades(AnaliseDados):
         
         return strLista
     
+    def listarEmOrdem(self):
+        '''
+        Este método ordena a lista e mostra os
+        elementos em ordem crescente
+        '''
+        if len(self.__lista) == 0:
+            print("Lista de idades vazia.")
+            return
+        ordenada = sorted(self.__lista)
+        print("Lista de idades em ordem crescente:\n", ordenada)
 
 def main():
     nomes = ListaNomes()
