@@ -206,6 +206,9 @@ class ListaNomes(AnaliseDados):
             print("--------Lista ordenada de Nomes--------")
             for nome in listaOrdenada:
                 print(nome)
+
+    def add(self, nome):
+        self.__lista.append(nome)
 	
 class ListaDatas(AnaliseDados):
         
@@ -254,8 +257,6 @@ class ListaDatas(AnaliseDados):
                     invalido = False
                 except ValueError as e:
                     print(str(e))
-        
-        
     
     def mostraMediana(self):
         '''
@@ -326,6 +327,9 @@ class ListaDatas(AnaliseDados):
             for data in listaOrdenada:
                 print(data)
 
+    def add(self, data):
+        self.__lista.append(data)
+
 class ListaSalarios(AnaliseDados):
 
     def __init__(self):
@@ -364,12 +368,7 @@ class ListaSalarios(AnaliseDados):
                 else:
                     self.__lista.append(salario)
                     print("Salario adicionado com sucesso!!")
-                    invalido = False
-
-                
-                
-
-                
+                    invalido = False        
 
     def mostraMediana(self):
         '''
@@ -429,6 +428,9 @@ class ListaSalarios(AnaliseDados):
             for salario in listaOrdenada:
                 print(salario)
 
+    def add(self, salario):
+        self.__lista.append(salario)
+        
 class ListaIdades(AnaliseDados):
     
     def __init__(self):
@@ -549,35 +551,73 @@ class ListaIdades(AnaliseDados):
             for idade in listaOrdenada:
                 print(idade)
 
+    def add(self, idade):
+        self.__lista.append(idade)
 
-def main():
+def menu():
     nomes = ListaNomes()
     datas = ListaDatas()
     salarios = ListaSalarios()
     idades = ListaIdades()
 
-    listaListas = [nomes, datas, salarios, idades]
+    while True:
+        print("1. Incluir um nome na lista de nomes.")
+        print("2. Incluir um salário na lista de salários.")
+        print("3. Incluir uma data na lista de datas.")
+        print("4. Incluir uma idade na lista de idades.")
+        print("5. Percorrer as listas de nomes e salários.")
+        print("6. Calcular o valor da folha com um reajuste de 10%")
+        print("7. Modificar o dia das datas anteriores a 2019.")
+        print("8. Sair.")
 
-    # Teste geral de classes
-    for lista in listaListas:
-        lista.entradaDeDados()
-        lista.listarEmOrdem()
-        print("___________________")
-        lista.mostraMediana()
-        lista.mostraMenor()
-        lista.mostraMaior()
-        print("___________________")
-        print("\n")
-        
-    print("Teste de iterador zip")
-    percorrerNomesSalarios(nomes.lista, salarios.lista)
-    
-    print("Teste de iterador map")
-    reajusteSalarios(salarios.lista)
-    
-    print("Teste de iterador filter")
-    filtrarDatas(datas)
+        opcao = int(input("Digite a opção desejada: "))
 
+        if opcao == 1:
+            print()
+            try:
+                nome = input("Digite o nome: ")
+                nomes.add(nome)
+            except Exception as e:
+                print(str(e))
+        elif opcao == 2:
+            print()
+            try:
+                salario = float(input("Digite o salario: "))
+                salarios.add(salario)
+            except Exception as e:
+                print(str(e))
+        elif opcao == 3:
+            print()
+            try:
+                data = input("Digite a data no formato dd/mm/aaaa: ")
+                dia, mes, ano = data.split("/")
+                data = Data(int(dia), int(mes), int(ano))
+                datas.add(data)
+            except Exception as e:
+                print(str(e))
+        elif opcao == 4:
+            print()
+            try:
+                idade = int(input("Digite a idade: "))
+                idades.add(idade)
+            except Exception as e:
+                print(str(e))
+        elif opcao == 5:
+            print()
+            percorrerNomesSalarios(nomes.lista, salarios.lista)
+        elif opcao == 6:
+            print()
+            reajusteSalarios(salarios.lista)
+        elif opcao == 7:
+            print()
+            filtrarDatas(datas)
+        elif opcao == 8:
+            break
+
+        print()
+
+def main():
+    menu()
 
 def percorrerNomesSalarios(nomes: ListaNomes, salarios: ListaSalarios):
     '''
